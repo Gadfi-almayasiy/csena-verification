@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CESNA Vérification</title>
+</head>
+<body style="background:black;color:white;text-align:center;padding:50px;">
+
+<h2 id="status">Chargement...</h2>
+<div id="info"></div>
+
+<script>
+const BASE_URL = "https://xetmneyuecjqenskvgba.supabase.co";
+const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhldG1uZXl1ZWNqcWVuc2t2Z2JhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0OTU0NzcsImV4cCI6MjA5MzA3MTQ3N30.EKrp13-dZEmXGR_WDZjaBdRtmCvYM35pi1Wb6rXMa1Y";
+
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+
+fetch(`${BASE_URL}?code_membre=eq.${code}`, {
+  headers: {
+    "apikey": API_KEY,
+    "Authorization": "Bearer " + API_KEY
+  }
+})
+.then(res => res.json())
+.then(data => {
+  if(data.length === 0){
+    document.getElementById("status").innerText = "❌ Membre introuvable";
+  } else {
+    const m = data[0];
+    document.getElementById("status").innerText = "✅ Membre vérifié";
+    document.getElementById("info").innerHTML = `
+      <h3>${m.nom} ${m.prenom}</h3>
+      <p>${m.poste}</p>
+      <p>${m.filiere}</p>
+      <p>${m.universite}</p>
+    `;
+  }
+});
+</script>
+
+</body>
+</html>
