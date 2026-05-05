@@ -1,0 +1,36 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #020617, #064e3b);
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 350px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #22c55e;
+  margin-bottom: 15px;
+}
+
+.valid {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.invalid {
+  color: #ef4444;
+  font-weight: bold;
+}
